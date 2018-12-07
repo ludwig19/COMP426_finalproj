@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Damion|Muli:400,600');
+
+html {
+  background: url(paperbg.png) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+#logo {
+  position: relative;
+}
+
+#logo img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+input[type="text"] {
+  font: 15px/24px 'Muli', sans-serif; 
+  color: #333; width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  vertical-align: center;
+}
+
+input[type="date"] {
+  font: 15px/24px 'Muli', sans-serif; 
+  color: #333; width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  vertical-align: center;
+}
+
+.col-3 {
+  float: left;
+  margin: 14px 1%;
+  position: relative;
+}
+
+.effect-20,
+
+.effect-21{
+  border: 1px solid transparent;
+  padding: 7px 14px; transition: 0.4s;
+  background: white;
+}
+
+.effect-20 ~ .focus-border:before,
+.effect-20 ~ .focus-border:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #4caf50;
+  transition: 0.3s;
+}
+
+.effect-20 ~ .focus-border:after{
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+}
+
+.effect-20 ~ .focus-border i:before,
+.effect-20 ~ .focus-border i:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background-color: #4caf50;
+  transition: 0.4s;
+}
+
+.effect-20 ~ .focus-border i:after{
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+}
+
+.effect-20:focus ~ .focus-border:before,
+.effect-20:focus ~ .focus-border:after,
+
+.has-content.effect-20 ~ .focus-border:before,
+.has-content.effect-20 ~ .focus-border:after{
+  width: 100%;
+  transition: 0.3s;
+}
+.effect-20:focus ~ .focus-border i:before,
+.effect-20:focus ~ .focus-border i:after,
+
+.has-content.effect-20 ~ .focus-border i:before,
+.has-content.effect-20 ~ .focus-border i:after{
+  height: 100%;
+  transition: 0.4s;
+}
+
+.effect-20 ~ label{
+  position: absolute;
+  left: 14px; width: 100%;
+  top: 10px; color: #aaaaaa;
+  transition: 0.3s;
+  z-index: -1;
+  letter-spacing: 0.5px;
+}
+
+.effect-20:focus ~ label, .has-content.effect-20 ~ label{
+  font: 15px/24px 'Muli', sans-serif; 
+  top: -24px;
+  left: 0;
+  font-size: 20px;
+  color: #ffffff; font-weight: bolder;
+  text-shadow: 1px 1px #4caf50;
+  transition: 0.3s;
+}
+
+
