@@ -7,7 +7,7 @@ $(document).ready(() => {
         let depart = $("#airport1").val();
         let arrival = $("#airport2").val();
         let dept_date = $("#depart_date").val();
-        let return_date = $("#return_date"); 
+        let return_date = $("#return_date").val(); 
         console.log(dept_date);
         //gettinng id code for departure and arrival to query flights\
         //departure
