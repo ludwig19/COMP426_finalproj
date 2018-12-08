@@ -4,6 +4,7 @@
     <title>Fly High</title>
     <meta charset="UTF-8">
     <link rel='stylesheet' href='final.css'/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="final.js"></script>
 </head>
@@ -12,7 +13,7 @@
 </div>
 <body>
 
-<div name ="input" style=" width:66%; margin:0 auto;">
+<div name ="input" style=" width:80%; margin: auto;">
 	<div class="col input-effect">
         <input name = "fromText" class="effectFirst" id="airport1" type="text" placeholder="&#9992; From?">
             <label>From? </label>
@@ -26,21 +27,20 @@
     </div>
 
     <div class="col input-effect">
-        <input name = "departCal" class="effectFirst" type="date" placeholder="&#128197; Depart">
-            <label>Departure </label>
+        <input name = "departCal" class="effectFirst" type="date">
+        <label>Depart </label>
         <span class="focus-border"></span>
     </div>
 
     <div class="col input-effect">
-        <input name = "departCal" class="effectFirst" type="date" placeholder="&#128197; Return">
-            <label>Return </label>
+        <input name = "arrivCal" class="effectFirst" type="date">
+        <label>Arrival </label>
         <span class="focus-border"></span>
     </div>
-    <div>
-        <button id="execute">Submit</button>
-    </div>
-    <div></div>
-   
+
+    <div class="col input-effect">
+        <button id="execute" class="col-button w3-button w3-round">Submit</button>
+    </div>  
 
 </div>
 	
