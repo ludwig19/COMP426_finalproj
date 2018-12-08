@@ -92,6 +92,9 @@ var flight_builder = (dictionary) =>{
     Arrival Date:           data
     //can query to select which airline it belongs to. 
     */
+    var departure_time = dictionary.departs_at;
+    var arrival_time = dictionary.arrives_at;
+    var airline_id = dictionary.id;
+    //$.ajax(root_url + 'airlines/' + 
     console.log(dictionary);
-    $('body').append('<p>'+dictionary.departs_at+'</p>');
 }
