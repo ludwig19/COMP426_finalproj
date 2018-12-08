@@ -5,6 +5,7 @@ html {
   background-size: cover;
   height: 100%;
   overflow: hidden;
+  overflow-y: scroll;
 }
 
 #logo {
@@ -19,7 +20,7 @@ html {
 
 input[type="text"] {
   font: 15px/24px 'Muli', sans-serif; 
-  color: #333; width: 100%;
+  color: #333333; width: 100%;
   box-sizing: border-box;
   letter-spacing: 1px;
   vertical-align: center;
@@ -27,19 +28,21 @@ input[type="text"] {
 
 input[type="date"] {
   font: 15px/24px 'Muli', sans-serif; 
-  color: #333; width: 100%;
+  color: #333333; width: 100%;
   box-sizing: border-box;
   letter-spacing: 1px;
   vertical-align: center;
 }
 
-.col-3 {
+
+
+.col {
   float: left;
   margin: 14px 1%;
   position: relative;
 }
 
-.effect-20,
+.effectFirst,
 
 .effect-21{
   border: 1px solid transparent;
@@ -47,8 +50,8 @@ input[type="date"] {
   background: white;
 }
 
-.effect-20 ~ .focus-border:before,
-.effect-20 ~ .focus-border:after{
+.effectFirst ~ .focus-border:before,
+.effectFirst ~ .focus-border:after{
   content: "";
   position: absolute;
   top: 0;
@@ -59,15 +62,15 @@ input[type="date"] {
   transition: 0.3s;
 }
 
-.effect-20 ~ .focus-border:after{
+.effectFirst ~ .focus-border:after{
   top: auto;
   bottom: 0;
   left: auto;
   right: 0;
 }
 
-.effect-20 ~ .focus-border i:before,
-.effect-20 ~ .focus-border i:after{
+.effectFirst ~ .focus-border i:before,
+.effectFirst ~ .focus-border i:after{
   content: "";
   position: absolute;
   top: 0;
@@ -78,31 +81,31 @@ input[type="date"] {
   transition: 0.4s;
 }
 
-.effect-20 ~ .focus-border i:after{
+.effectFirst ~ .focus-border i:after{
   left: auto;
   right: 0;
   top: auto;
   bottom: 0;
 }
 
-.effect-20:focus ~ .focus-border:before,
-.effect-20:focus ~ .focus-border:after,
+.effectFirst:focus ~ .focus-border:before,
+.effectFirst:focus ~ .focus-border:after,
 
-.has-content.effect-20 ~ .focus-border:before,
-.has-content.effect-20 ~ .focus-border:after{
+.has-content.effectFirst ~ .focus-border:before,
+.has-content.effectFirst ~ .focus-border:after{
   width: 100%;
   transition: 0.3s;
 }
-.effect-20:focus ~ .focus-border i:before,
-.effect-20:focus ~ .focus-border i:after,
+.effectFirst:focus ~ .focus-border i:before,
+.effectFirst:focus ~ .focus-border i:after,
 
-.has-content.effect-20 ~ .focus-border i:before,
-.has-content.effect-20 ~ .focus-border i:after{
+.has-content.effectFirst ~ .focus-border i:before,
+.has-content.effectFirst ~ .focus-border i:after{
   height: 100%;
   transition: 0.4s;
 }
 
-.effect-20 ~ label{
+.effectFirst ~ label{
   position: absolute;
   left: 14px; width: 100%;
   top: 10px; color: #aaaaaa;
@@ -111,7 +114,7 @@ input[type="date"] {
   letter-spacing: 0.5px;
 }
 
-.effect-20:focus ~ label, .has-content.effect-20 ~ label{
+.effectFirst:focus ~ label, .has-content.effect-20 ~ label{
   font: 15px/24px 'Muli', sans-serif; 
   top: -24px;
   left: 0;
