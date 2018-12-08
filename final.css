@@ -44,7 +44,7 @@ input[type="date"] {
 
 .effectFirst,
 
-.effect-21{
+.effectSetup{
   border: 1px solid transparent;
   padding: 7px 14px; transition: 0.4s;
   background: white;
@@ -114,7 +114,7 @@ input[type="date"] {
   letter-spacing: 0.5px;
 }
 
-.effectFirst:focus ~ label, .has-content.effect-20 ~ label{
+.effectFirst:focus ~ label, .has-content.effectFirst ~ label{
   font: 15px/24px 'Muli', sans-serif; 
   top: -24px;
   left: 0;
