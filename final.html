@@ -3,23 +3,24 @@
 <head>
     <title>Fly High</title>
     <meta charset="UTF-8">
-    <link rel='stylesheet' href='C:\Users\Mason\Desktop\COMP426\Final Project\final.css'/>
-    <script src="NULL"></script>
+    <link rel='stylesheet' href='final.css'/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="final.js"></script>
 </head>
 <div name="logo">
-	<img src="C:\Users\Mason\Desktop\COMP426\Final Project\planeLOGO.png" class="ribbon">
+	<img src="planeLOGO.png" class="ribbon">
 </div>
 <body>
 
 <div name ="input" style=" width:66%; margin:0 auto;">
 	<div class="col input-effect">
-        <input name = "fromText" class="effectFirst" type="text" placeholder="&#9992; From?">
+        <input name = "fromText" class="effectFirst" id="airport1" type="text" placeholder="&#9992; From?">
             <label>From? </label>
         <span class="focus-border"></span>
     </div>
 
     <div class="col input-effect">
-        <input name = "toText" class="effectFirst" type="text" placeholder="&#9992; To?">
+        <input name = "toText" class="effectFirst" id="airport2" type="text" placeholder="&#9992; To?">
             <label>To? </label>
         <span class="focus-border"></span>
     </div>
@@ -35,7 +36,9 @@
             <label>Return </label>
         <span class="focus-border"></span>
     </div>
-
+    <div>
+        <button id="execute">Submit</button>
+    </div>
    
 
 </div>

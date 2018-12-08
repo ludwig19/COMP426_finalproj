@@ -55,8 +55,7 @@ $(document).ready(() => {
                                                 xhrFields: {withCredentials: true},
                                                 datatype: 'json',
                                                 success: (response) => {
-                                                    
-                                                    response.forEach(function(dictionary) {
+                                                     response.forEach(function(dictionary) {
                                                         flight_builder(dictionary);
                                                     });
                                                     console.log(response);
@@ -93,4 +92,6 @@ var flight_builder = (dictionary) =>{
     Arrival Date:           data
     //can query to select which airline it belongs to. 
     */
+    console.log(dictionary);
+    $('body').append('<p>'+dictionary.departs_at+'</p>');
 }
