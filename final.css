@@ -7,7 +7,9 @@ html {
   overflow: hidden;
   overflow-y: scroll;
 }
-
+#input {
+    height: 500px;
+}
 #logo {
   position: relative;
 }
@@ -135,12 +137,6 @@ input[type="date"] {
   color: #ffffff; font-weight: bolder;
   text-shadow: 1px 1px #7fb509;
   transition: 0.3s;
-}
-#flight_container{
-	border-top: thin solid black;
-	border-bottom: thin solid black;
-	border-left: thin solid black;
-	border-right: thin solid black;
 }
 
 

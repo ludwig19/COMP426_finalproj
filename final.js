@@ -2,7 +2,7 @@ var root_url = "http://comp426.cs.unc.edu:3001/";
 var arrival_id, depart_id;
 
 $(document).ready(() => {
-    
+
     $('#execute').on('click', () => {
         $('.append_below').empty();
         let depart = $("#airport1").val();
@@ -16,6 +16,7 @@ $(document).ready(() => {
         //flight_getter(arrival, depart, arrive_early, arrive_late);
     });
 });
+
 
 function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
     $.ajax(root_url + "airports?filter[code]=" + depart,
@@ -110,9 +111,7 @@ var flight_builder = (dictionary, depart, arrival) =>{
             success: (response) => {
                 airline_name = response.name;
                 var body = $(".append_below");
-				var flight_list = $('<div id="flight_container"></div>');
-				body.append(flight_list);
-                $(flight_list).append(`<ul>
+                $(body).append(`<ul>
                                 <li>${airline_name}</li>
                                 <li>${departure_time}</li>
                                 <li>${arrival_time}</li>

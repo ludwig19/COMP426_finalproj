@@ -8,12 +8,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="final.js"></script>
 </head>
+<body>
 <div name="logo">
 	<img src="planeLOGO.png" class="ribbon">
 </div>
-<body>
-
-<div name ="input" style=" width:80%; margin: auto;">
+<div name ="input" style=" width:80%; margin: auto;" id="input">
 	<div class="col input-effect">
         <input name = "fromText" class="effectFirst" id="airport1" type="text" placeholder="&#9992; From">
             <label>From? </label>
@@ -40,24 +39,22 @@
 
     <div class="col input-effect">
         <input name = "arrivCal" class="effectFirst" type="time" id="return_early">
-        <label>Arrival Early</label>
+        <label>Return Early</label>
         <span class="focus-border"></span>
     </div>
     
     <div class="col input-effect">
         <input name = "arrivCal" class="effectFirst" type="time" id="return_late">
-        <label>Arrival Early</label>
+        <label>Return Early</label>
         <span class="focus-border"></span>
     </div>
     
     <div class="col input-effect">
         <button id="execute" class="col-button w3-button w3-round">Submit</button>
     </div> 
-    
-    </div>
-
 </div>
-	<div class="append_below">
+<div class="append_below">
+</div>
 
 </body>
 </html>
