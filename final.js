@@ -118,6 +118,7 @@ var flight_builder = (dictionary, depart, arrival) =>{
                                 <li>departure airport: ${depart}</li>
                                 <li>arrival airport: ${arrival}</li>
                             </ul>`);
+				$(body).append('<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Book Ticket</button>');
             }
     });
 }
