@@ -6,7 +6,11 @@
     <link rel='stylesheet' href='final.css'/>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="final.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="final.js"></script>
 </head>
 <body>
 <div name="logo">
@@ -54,6 +58,35 @@
     </div> 
 </div>
 <div class="append_below">
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Book Your Ticket!</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please Answer These Questions!</p>
+        </div>
+		First Name: <input id='firstName' type='text'><br></input>
+		Middle Name: <input id='middleName' type='text'><br></input>
+		Last Name:<input id='lastName' type='text'><br></input>
+		Age: <input id='age' type='int'><br></input>
+		Gender: <input id='gender' type='text'><br></input>
+		
+        <div class="modal-footer">
+          <button type="button" id = 'confirm' class="btn btn-default" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
 </div>
 
 </body>

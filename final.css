@@ -8,7 +8,7 @@ html {
   overflow-y: scroll;
 }
 #input {
-    height: 500px;
+    height: 200px;
 }
 #logo {
   position: relative;
