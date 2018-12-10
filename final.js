@@ -51,7 +51,7 @@ function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
                                 }
                             });
                             //end departure tickets
-                            if(a_early != undefined && a_late!=undefined){
+                            if(a_early && a_late){
                                 //return tickets
                                 //this can be moved inside the depart tickets so that once a departure ticket is selected so that the next window to pop up is return tickets
                                 console.log(a_early);
