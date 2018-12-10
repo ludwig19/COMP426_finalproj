@@ -110,7 +110,9 @@ var flight_builder = (dictionary, depart, arrival) =>{
             success: (response) => {
                 airline_name = response.name;
                 var body = $(".append_below");
-                $(body).append(`<ul>
+				var flight_list = $('<div id="flight_container"></div>');
+				body.append(flight_list);
+                $(flight_list).append(`<ul>
                                 <li>${airline_name}</li>
                                 <li>${departure_time}</li>
                                 <li>${arrival_time}</li>

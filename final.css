@@ -136,5 +136,11 @@ input[type="date"] {
   text-shadow: 1px 1px #7fb509;
   transition: 0.3s;
 }
+#flight_container{
+	border-top: thin solid black;
+	border-bottom: thin solid black;
+	border-left: thin solid black;
+	border-right: thin solid black;
+}
 
 
