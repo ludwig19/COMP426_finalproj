@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Damion|Muli:400,600');
 
-html {
+html, body {
   background: url(paperbg.png) no-repeat center center fixed;
   background-size: cover;
-  height: 100%;
+  height: auto;
   overflow: hidden;
-  overflow-y: scroll;
+}
+html {
+	overflow-y: scroll;
 }
 #input {
     height: 200px;
