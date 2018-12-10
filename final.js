@@ -4,12 +4,13 @@ var arrival_id, depart_id;
 $(document).ready(() => {
     
     $('#execute').on('click', () => {
+        $('.append_below').empty();
         let depart = $("#airport1").val();
         let arrival = $("#airport2").val();
         let dept_early = $("#depart_early").val();
         let dept_late = $("#depart_late").val();
-        let arrive_early = $("#depart_early").val();
-        let arrive_late = $("#depart_late").val();
+        let arrive_early = $("#return_early").val();
+        let arrive_late = $("#return_late").val();
         //gettinng id code for departure and arrival to query flights\
         flight_getter(depart, arrival, dept_early, dept_late, arrive_early, arrive_late);
         //flight_getter(arrival, depart, arrive_early, arrive_late);
@@ -50,17 +51,18 @@ function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
                                 }
                             });
                             //end departure tickets
-                            if(a_early!=undefined || a_late!=undefined){
+                            if(a_early != undefined && a_late!=undefined){
                                 //return tickets
-                                //this can be moved inside the depart tickets so that once a departure ticket is selected so that the next window to pop up is return tickets 
-                                console.log('We made it to here');
+                                //this can be moved inside the depart tickets so that once a departure ticket is selected so that the next window to pop up is return tickets
+                                console.log(a_early);
+                                console.log(a_late);
                                  $.ajax(root_url + `flights?filter[departure_id]=${arrival_id}&filter[arrival_id]=${depart_id}&filter[departs_at_ge]=${a_early}&filter[departs_at_le]=${a_late}`, {
                                     type: 'GET',
                                     xhrFields: {withCredentials: true},
                                     datatype: 'json',
                                     success: (response) => {
                                         response.forEach(function(dictionary) {
-                                            console.log(root_url + `flights?filter[departure_id]=${depart_id}&filter[arrival_id]=${arrival_id}&filter[departs_at_ge]=${a_early}&filter[departs_at_le]=${a_late}`);
+                                            console.log(root_url + `flights?filter[departure_id]=${arrival_id}&filter[arrival_id]=${depart_id}&filter[departs_at_ge]=${a_early}&filter[departs_at_le]=${a_late}`);
                                             flight_builder(dictionary, arrival, depart);
                                         });
                                     }
@@ -108,7 +110,7 @@ var flight_builder = (dictionary, depart, arrival) =>{
             success: (response) => {
                 airline_name = response.name;
                 var body = $(".append_below");
-                console.log(`<ul>
+                $(body).append(`<ul>
                                 <li>${airline_name}</li>
                                 <li>${departure_time}</li>
                                 <li>${arrival_time}</li>
