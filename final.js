@@ -2,21 +2,21 @@ var root_url = "http://comp426.cs.unc.edu:3001/";
 var arrival_id, depart_id;
 
 $(document).ready(() => {
+    
     $('#execute').on('click', () => {
-        $(".append_below").empty();
         let depart = $("#airport1").val();
         let arrival = $("#airport2").val();
-        let dept_date = $("#depart_date").val();
-        let return_date = $("#return_date").val(); 
-        console.log(dept_date);
+        let dept_early = $("#depart_early").val();
+        let dept_late = $("#depart_late").val();
+        let arrive_early = $("#depart_early").val();
+        let arrive_late = $("#depart_late").val();
         //gettinng id code for departure and arrival to query flights\
-        //departure
-        flight_getter(depart, arrival);
-        
+        flight_getter(depart, arrival, dept_early, dept_late, arrive_early, arrive_late);
+        //flight_getter(arrival, depart, arrive_early, arrive_late);
     });
 });
 
-function flight_getter(depart, arrival) {
+function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
     $.ajax(root_url + "airports?filter[code]=" + depart,
            {
         type: 'GET',
@@ -37,19 +37,39 @@ function flight_getter(depart, arrival) {
                             let arrival_data = response[0];
                             arrival_id = arrival_data.id;
                             //combining 
-                            $.ajax(root_url + "flights?filter[departure_id]=" + depart_id + "&filter[arrival_id]=" +arrival_id, {
+                            //departure tickets
+                            $.ajax(root_url + `flights?filter[departure_id]=${depart_id}&filter[arrival_id]=${arrival_id}&filter[departs_at_ge]=${d_early}&filter[departs_at_le]=${d_late}`, {
                                 type: 'GET',
                                 xhrFields: {withCredentials: true},
                                 datatype: 'json',
                                 success: (response) => {
                                     response.forEach(function(dictionary) {
+                                        console.log(root_url + `flights?filter[departure_id]=${depart_id}&filter[arrival_id]=${arrival_id}&filter[departs_at_ge]=${d_early}&filter[departs_at_le]=${d_late}`);
                                         flight_builder(dictionary, depart, arrival);
                                     });
                                 }
                             });
+                            //end departure tickets
+                            if(a_early!=undefined || a_late!=undefined){
+                                //return tickets
+                                //this can be moved inside the depart tickets so that once a departure ticket is selected so that the next window to pop up is return tickets 
+                                console.log('We made it to here');
+                                 $.ajax(root_url + `flights?filter[departure_id]=${arrival_id}&filter[arrival_id]=${depart_id}&filter[departs_at_ge]=${a_early}&filter[departs_at_le]=${a_late}`, {
+                                    type: 'GET',
+                                    xhrFields: {withCredentials: true},
+                                    datatype: 'json',
+                                    success: (response) => {
+                                        response.forEach(function(dictionary) {
+                                            console.log(root_url + `flights?filter[departure_id]=${depart_id}&filter[arrival_id]=${arrival_id}&filter[departs_at_ge]=${a_early}&filter[departs_at_le]=${a_late}`);
+                                            flight_builder(dictionary, arrival, depart);
+                                        });
+                                    }
+                                });
+                                //end return tickets
+                            }
                         }
                         else{
-                            alert("Enter valid Airport Codes");
+                            alert("Enter valid Airport Codes -- failed airport2");
                         }
 
                     },
@@ -59,7 +79,8 @@ function flight_getter(depart, arrival) {
                 });
             }
             else{
-                alert("Enter valid Airport Codes");
+                console.log(root_url + "airports?filter[code]=" + depart);
+                alert("Enter valid Airport Codes -- failed airport 1");
             }
 
         },
@@ -68,7 +89,6 @@ function flight_getter(depart, arrival) {
         }
     });
 }
-
 var flight_builder = (dictionary, depart, arrival) =>{
     //fill this in with each individual flight builder
     /*
@@ -88,7 +108,7 @@ var flight_builder = (dictionary, depart, arrival) =>{
             success: (response) => {
                 airline_name = response.name;
                 var body = $(".append_below");
-                body.append(`<ul>
+                console.log(`<ul>
                                 <li>${airline_name}</li>
                                 <li>${departure_time}</li>
                                 <li>${arrival_time}</li>
@@ -97,4 +117,10 @@ var flight_builder = (dictionary, depart, arrival) =>{
                             </ul>`);
             }
     });
+}
+//potentially useless funct
+Date.prototype.withoutTime = function () {
+    var d = new Date(this);
+    d.setHours(0, 0, 0, 0);
+    return d;
 }
