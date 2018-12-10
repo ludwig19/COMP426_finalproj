@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Damion|Muli:400,600');
 
-html {
+html,body {
   background: url(paperbg.png) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
@@ -8,7 +8,7 @@ html {
   overflow-y: scroll;
 }
 #input {
-    height: 500px;
+    height: 200px;
 }
 #logo {
   position: relative;
@@ -120,7 +120,7 @@ input[type="date"] {
   transition: 0.4s;
 }
 
-.effectFirst ~ label{
+.effectFirst ~ label {
   position: absolute;
   left: 14px; width: 100%;
   top: 10px; color: #aaaaaa;
