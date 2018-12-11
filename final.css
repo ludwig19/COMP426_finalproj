@@ -14,6 +14,30 @@ html,body {
   position: relative;
 }
 
+#firstName, #middleName, #lastName, #age, #gender {
+	width: 40%;
+	margin-top: 5%;
+	
+
+}
+#modLab {
+
+	font: 15px/24px 'Muli', sans-serif; 
+	color: #333333; width: 100%;
+	box-sizing: border-box;
+	letter-spacing: 1px;
+	vertical-align: center;
+}
+
+#soundcloud{
+	position: fixed;
+  right: 0;
+  bottom: 0;
+  padding-right: 12.5%;
+}
+
+
+
 #logo img {
   position: absolute;
   top: 0px;
@@ -39,7 +63,7 @@ input[type="text"] {
   vertical-align: center;
 }
 
-input[type="date"] {
+input[type="time"] {
   font: 15px/24px 'Muli', sans-serif; 
   color: #333333; width: 100%;
   box-sizing: border-box;
