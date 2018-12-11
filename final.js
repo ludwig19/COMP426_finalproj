@@ -1,9 +1,10 @@
 var root_url = "http://comp426.cs.unc.edu:3001/";
 var arrival_id, depart_id;
-
+var counter = 0;
+var send_once = 1;
 $(document).ready(() => {
-
     $('#execute').on('click', () => {
+        send_once = 1;
         $('.append_below').empty();
         let depart = $("#airport1").val();
         let arrival = $("#airport2").val();
@@ -16,8 +17,11 @@ $(document).ready(() => {
         //flight_getter(arrival, depart, arrive_early, arrive_late);
     });
 });
-
-
+$(document).on('click', "#ticket_btn", () => {
+    $('append_below').empty();
+    id = $('#ticket_input').val();
+    ticket_getter(id);
+});
 function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
     $.ajax(root_url + "airports?filter[code]=" + depart,
            {
@@ -45,10 +49,14 @@ function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
                                 xhrFields: {withCredentials: true},
                                 datatype: 'json',
                                 success: (response) => {
+                                    counter = 0;
                                     response.forEach(function(dictionary) {
-                                        console.log(root_url + `flights?filter[departure_id]=${depart_id}&filter[arrival_id]=${arrival_id}&filter[departs_at_ge]=${d_early}&filter[departs_at_le]=${d_late}`);
-                                        flight_builder(dictionary, depart, arrival);
+                                        flight_builder(dictionary, depart, arrival, counter);
+                                        counter++;
                                     });
+                                            $('.book_ticket').click(function(){
+                                                console.log($(this).attr('id'));
+                                            });
                                 }
                             });
                             //end departure tickets
@@ -63,8 +71,8 @@ function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
                                     datatype: 'json',
                                     success: (response) => {
                                         response.forEach(function(dictionary) {
-                                            console.log(root_url + `flights?filter[departure_id]=${arrival_id}&filter[arrival_id]=${depart_id}&filter[departs_at_ge]=${a_early}&filter[departs_at_le]=${a_late}`);
-                                            flight_builder(dictionary, arrival, depart);
+                                            flight_builder(dictionary, arrival, depart, counter);
+                                            counter++;
                                         });
                                     }
                                 });
@@ -92,7 +100,7 @@ function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
         }
     });
 }
-var flight_builder = (dictionary, depart, arrival) =>{
+var flight_builder = (dictionary, depart, arrival, count) =>{
     //fill this in with each individual flight builder
     /*
     Departure --> Arrival:  data
@@ -103,6 +111,8 @@ var flight_builder = (dictionary, depart, arrival) =>{
     var departure_time = dictionary.departs_at;
     var arrival_time = dictionary.arrives_at;
     var airline_id = dictionary.airline_id;
+    var flight_id = dictionary.id;
+    var ts_bool = 1;
     $.ajax(root_url + 'airlines/' + airline_id,
            {
             type: 'GET',
@@ -111,20 +121,82 @@ var flight_builder = (dictionary, depart, arrival) =>{
             success: (response) => {
                 airline_name = response.name;
                 var body = $(".append_below");
-                $(body).append(`<ul>
-                                <li>${airline_name}</li>
-                                <li>${departure_time}</li>
-                                <li>${arrival_time}</li>
-                                <li>departure airport: ${depart}</li>
-                                <li>arrival airport: ${arrival}</li>
-                            </ul>`);
-				$(body).append('<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Book Ticket</button>');
+                $(body).append(`<div class="ts${count}">
+                                    Airline--${airline_name}<br>
+                                    Departure Time--${departure_time}<br>
+                                    Arrival Time--${arrival_time}<br>
+                                    departure airport--${depart}<br>
+                                    arrival airport--${arrival}<br>
+                                    flight ID--${flight_id}<br>
+                                </div>
+                                <button type="button" class="btn btn-info btn-lg book_ticket" id="ts${count}" data-toggle="modal" data-target="#myModal">Book Ticket</button>`);
+                if(ts_bool){
+                    $('.book_ticket').click(function(){
+                        btn_id = $(this).attr('id');
+                        let string_to_slice = $(this).prev()[0].innerHTML;
+                        let string_array = string_to_slice.split("<br>");
+                        var out_array = [];
+                        let i = 0;
+                        /*
+                        [0] => airline
+                        [1] => dept time
+                        [2] => arrive time
+                        [3] => dept airport
+                        [4] => arrive airport
+                        [5] => flight ID
+                        */
+                        string_array.forEach(function(element){
+                            out_array[i] = element.split("--")[1];
+                            i++;
+                        });
+                        //currently posting twice need to make condit variable to limit to a single post in this section
+                        $('#confirm').click(function(){
+                            let first1 = $('#firstName').val();
+                            let middle1 = $('#middleName').val();
+                            let last1 = $('#lastName').val();
+                            let age1 = $('#age').val();
+                            let gender1 = $('#gender').val();
+                            console.log(first1);
+                            console.log(middle1);
+                            console.log(last1);
+                            console.log(gender1);
+                            console.log(parseInt(age1));
+                            if(send_once){
+                                ticket_poster(first1, middle1, last1, parseInt(age1), gender1, true, parseInt(out_array[5]), out_array[1], out_array[0]);
+                                send_once=0;
+                            }
+                        });
+                    });
+                }   
             }
     });
 }
-//potentially useless funct
-Date.prototype.withoutTime = function () {
-    var d = new Date(this);
-    d.setHours(0, 0, 0, 0);
-    return d;
+
+//used to post tickets will connect with submit button. 
+var ticket_poster = (first, middle, last, age, gender, is_purchased, flight_id, departure_time, airline) => {
+    $.ajax(`${root_url}tickets`, {
+        type: 'POST',
+        xhrFields: {withCredentials: true},
+        data : {"ticket": {
+                "first_name":   first,
+                "middle_name":  middle,
+                "last_name":    last,
+                "age":          age,
+                "gender":       gender,
+                "is_purchased": is_purchased,
+                "price_paid":   "420",
+            //if y'all wanna redo this section I'd appreciate it if it looked nice. 
+                "info": `Suuhh, ${first}, Thanks for booking with Fly High. Being such a high roller, you've gotten the special discount ticket for only $420! Here's some additional info about your flight. Your flight number is ${flight_id} and it departs at ${departure_time}. Remember, you'll be flying on ${airline}. Stay toasty, my dude!`
+              }
+        },
+    }); 
+}
+var ticket_getter = (id) => {
+    $.ajax(`${root_url}tickets/${id}`, {
+        type: 'GET',
+        xhrFields: {withCredentials: true},
+        success: (response) => {
+            $('.append_below').append(response.age);            
+        } 
+    }); 
 }
