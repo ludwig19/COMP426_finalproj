@@ -209,7 +209,7 @@ var ticket_getter = (id) => {
                                             <ul>
                                                 <li>first name--${first_name}</li>
                                                 <li>middle name--${middle_name}</li>
-                                                <li>last name--${last_name}}</li>
+                                                <li>last name--${last_name}</li>
                                                 <li>age--${age}</li>
                                                 <li>gender--${gender}</li>
                                                 <li>info--${info}</li>
