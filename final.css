@@ -17,7 +17,6 @@ body {
 #firstName, #middleName, #lastName, #age, #gender {
 	width: 40%;
 	margin-top: 5%;
-	
 
 }
 #modLab {
@@ -27,6 +26,15 @@ body {
 	box-sizing: border-box;
 	letter-spacing: 1px;
 	vertical-align: center;
+}
+
+#ticket_input {
+	font: 15px/24px 'Muli', sans-serif; 
+  color: #333333;
+  box-sizing: border-box;
+  width: 35%;
+  letter-spacing: 1px;
+  vertical-align: center;
 }
 
 #soundcloud{
@@ -44,16 +52,23 @@ body {
   left: 0px;
 }
 
-#execute{
+#execute, #ticket_btn {
   -webkit-transition-duration: 0.2s; 
   background-color: #7fb509;
   transition-duration: 0.2s;
   background-color: #7fb509;
-  width: 120%;
   cursor: pointer;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  height: 40px;
 }
 
+#ticket_input {
+	  font: 15px/24px 'Muli', sans-serif; 
+  color: #333333;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  vertical-align: center;
+}
 
 input[type="text"] {
   font: 15px/24px 'Muli', sans-serif; 

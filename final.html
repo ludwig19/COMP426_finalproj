@@ -16,7 +16,11 @@
 <div name="logo">
 	<img src="planeLOGO.png" class="ribbon">
 </div>
-<div name ="input" style=" width:80%; margin: auto;" id="input">
+<div align="center" class="ribbon" style="margin-bottom: 3%;">
+        <input id="ticket_input" class="effectFirst" placeholder="Look-up Past Ticket Itinerary" type="text">
+        <button id="ticket_btn" class="col-button w3-button w3-round" >Search</button>
+    </div>
+<div name ="input" style=" width:80%; margin: auto;" id="input" align="center">
 	<div class="col input-effect">
         <input name = "fromText" class="effectFirst" id="airport1" type="text" placeholder="&#9992; From">
             <label>From? </label>
@@ -57,11 +61,7 @@
         <button id="execute" class="col-button w3-button w3-round">Submit</button>
     </div> 
 </div>
-    <div>
-        <input id="ticket_input" placeholder="Ticket Number">
-        <button id="ticket_btn">Retrieve Ticket</button>
-    </div>
-<div class="append_below" id = "append_below_body">
+<div class="append_below">
 </div>
 
 <!-- Modal -->
