@@ -16,11 +16,10 @@ body {
 
 #firstName, #middleName, #lastName, #age, #gender {
 	width: 40%;
-	margin-top: 5%;
+
 
 }
 #modLab {
-
 	font: 15px/24px 'Muli', sans-serif; 
 	color: #333333; width: 100%;
 	box-sizing: border-box;
