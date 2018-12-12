@@ -18,7 +18,7 @@ $(document).ready(() => {
     });
 });
 $(document).on('click', "#ticket_btn", () => {
-    $('append_below').empty();
+    $('.append_below').empty();
     id = $('#ticket_input').val();
     ticket_getter(id);
 });
@@ -132,37 +132,38 @@ var flight_builder = (dictionary, depart, arrival, count) =>{
                                     flight ID--${flight_id}<br>
                                 </div>
                                 <button type="button" class="btn btn-info btn-lg book_ticket" id="ts${count}" data-toggle="modal" data-target="#myModal">Book Ticket</button>`);
-                $('.book_ticket').click(function(){
-                    btn_id = $(this).attr('id');
-                    let string_to_slice = $(this).prev()[0].innerHTML;
-                    let string_array = string_to_slice.split("<br>");
-                    var out_array = [];
-                    let i = 0;
-                    /*
-                    [0] => airline
-                    [1] => dept time
-                    [2] => arrive time
-                    [3] => dept airport
-                    [4] => arrive airport
-                    [5] => flight ID
-                    */
-                    string_array.forEach(function(element){
-                        out_array[i] = element.split("--")[1];
-                        i++;
+                if(ts_bool){
+                    $('.book_ticket').click(function(){
+                        btn_id = $(this).attr('id');
+                        let string_to_slice = $(this).prev()[0].innerHTML;
+                        let string_array = string_to_slice.split("<br>");
+                        var out_array = [];
+                        let i = 0;
+                        /*
+                        [0] => airline
+                        [1] => dept time
+                        [2] => arrive time
+                        [3] => dept airport
+                        [4] => arrive airport
+                        [5] => flight ID
+                        */
+                        string_array.forEach(function(element){
+                            out_array[i] = element.split("--")[1];
+                            i++;
+                        });
+                        //currently posting twice need to make condit variable to limit to a single post in this section
+                        $('#confirm').click(function(){
+                            let first1 = $('#firstName').val();
+                            let middle1 = $('#middleName').val();
+                            let last1 = $('#lastName').val();
+                            let age1 = $('#age').val();
+                            let gender1 = $('#gender').val();
+                            
+                            ticket_poster(first1, middle1, last1, parseInt(age1), gender1, true, parseInt(out_array[5]), out_array[1], out_array[0]);
+                            send_once=0;
+                        });
                     });
-                    //currently posting twice need to make condit variable to limit to a single post in this section
-                    $('#confirm').click(function(){
-                        let first1 = $('#firstName').val();
-                        let middle1 = $('#middleName').val();
-                        let last1 = $('#lastName').val();
-                        let age1 = $('#age').val();
-                        let gender1 = $('#gender').val();
-                        
-                        ticket_poster(first1, middle1, last1, parseInt(age1), gender1, true, parseInt(out_array[5]), out_array[1], out_array[0]);
-                        send_once=0;
-                        
-                    });
-                }); 
+                }   
             }
     });
 }
@@ -184,6 +185,10 @@ var ticket_poster = (first, middle, last, age, gender, is_purchased, flight_id, 
                 "info": `Suuhh, ${first}, Thanks for booking with Fly High. Being such a high roller, you've gotten the special discount ticket for only $420! Here's some additional info about your flight. Your flight number is ${flight_id} and it departs at ${departure_time}. Remember, you'll be flying on ${airline}. Stay toasty, my dude!`
               }
         },
+        "success" : (response) => {
+            
+            alert(`Your ticket ID is ${response.id}`);
+        }
     }); 
 }
 var ticket_getter = (id) => {
@@ -191,7 +196,26 @@ var ticket_getter = (id) => {
         type: 'GET',
         xhrFields: {withCredentials: true},
         success: (response) => {
-            $('.append_below').append(response.age);            
+            let first_name = response.first_name;
+            let gender = response.gender;
+            let age = response.age;
+            let info = response.info;
+            let last_name = response.last_name;
+            let middle_name = response.middle_name;
+            let price = response.price_paid;
+            //mason style here 
+            $('.append_below').append(`
+                                        <div>
+                                            <ul>
+                                                <li>first name--${first_name}</li>
+                                                <li>middle name--${middle_name}</li>
+                                                <li>last name--${last_name}}</li>
+                                                <li>age--${age}</li>
+                                                <li>gender--${gender}</li>
+                                                <li>info--${info}</li>
+                                                <li>price--${price}</li>
+                                            </ul>
+                                        </div>`)
         } 
     }); 
 }
