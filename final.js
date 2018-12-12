@@ -73,6 +73,7 @@ function flight_getter(depart, arrival, d_early, d_late, a_early, a_late) {
                                         response.forEach(function(dictionary) {
                                             flight_builder(dictionary, arrival, depart, counter);
                                             counter++;
+                                            
                                         });
                                     }
                                 });
@@ -113,6 +114,7 @@ var flight_builder = (dictionary, depart, arrival, count) =>{
     var airline_id = dictionary.airline_id;
     var flight_id = dictionary.id;
     var ts_bool = 1;
+    flight_dict = {};
     $.ajax(root_url + 'airlines/' + airline_id,
            {
             type: 'GET',
@@ -130,44 +132,37 @@ var flight_builder = (dictionary, depart, arrival, count) =>{
                                     flight ID--${flight_id}<br>
                                 </div>
                                 <button type="button" class="btn btn-info btn-lg book_ticket" id="ts${count}" data-toggle="modal" data-target="#myModal">Book Ticket</button>`);
-                if(ts_bool){
-                    $('.book_ticket').click(function(){
-                        btn_id = $(this).attr('id');
-                        let string_to_slice = $(this).prev()[0].innerHTML;
-                        let string_array = string_to_slice.split("<br>");
-                        var out_array = [];
-                        let i = 0;
-                        /*
-                        [0] => airline
-                        [1] => dept time
-                        [2] => arrive time
-                        [3] => dept airport
-                        [4] => arrive airport
-                        [5] => flight ID
-                        */
-                        string_array.forEach(function(element){
-                            out_array[i] = element.split("--")[1];
-                            i++;
-                        });
-                        //currently posting twice need to make condit variable to limit to a single post in this section
-                        $('#confirm').click(function(){
-                            let first1 = $('#firstName').val();
-                            let middle1 = $('#middleName').val();
-                            let last1 = $('#lastName').val();
-                            let age1 = $('#age').val();
-                            let gender1 = $('#gender').val();
-                            console.log(first1);
-                            console.log(middle1);
-                            console.log(last1);
-                            console.log(gender1);
-                            console.log(parseInt(age1));
-                            if(send_once){
-                                ticket_poster(first1, middle1, last1, parseInt(age1), gender1, true, parseInt(out_array[5]), out_array[1], out_array[0]);
-                                send_once=0;
-                            }
-                        });
+                $('.book_ticket').click(function(){
+                    btn_id = $(this).attr('id');
+                    let string_to_slice = $(this).prev()[0].innerHTML;
+                    let string_array = string_to_slice.split("<br>");
+                    var out_array = [];
+                    let i = 0;
+                    /*
+                    [0] => airline
+                    [1] => dept time
+                    [2] => arrive time
+                    [3] => dept airport
+                    [4] => arrive airport
+                    [5] => flight ID
+                    */
+                    string_array.forEach(function(element){
+                        out_array[i] = element.split("--")[1];
+                        i++;
                     });
-                }   
+                    //currently posting twice need to make condit variable to limit to a single post in this section
+                    $('#confirm').click(function(){
+                        let first1 = $('#firstName').val();
+                        let middle1 = $('#middleName').val();
+                        let last1 = $('#lastName').val();
+                        let age1 = $('#age').val();
+                        let gender1 = $('#gender').val();
+                        
+                        ticket_poster(first1, middle1, last1, parseInt(age1), gender1, true, parseInt(out_array[5]), out_array[1], out_array[0]);
+                        send_once=0;
+                        
+                    });
+                }); 
             }
     });
 }

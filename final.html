@@ -49,7 +49,7 @@
     
     <div class="col input-effect">
         <input name = "arrivCal" class="effectFirst" type="time" id="return_late">
-        <label>Return Early</label>
+        <label>Return Late</label>
         <span class="focus-border"></span>
     </div>
     
@@ -57,6 +57,10 @@
         <button id="execute" class="col-button w3-button w3-round">Submit</button>
     </div> 
 </div>
+    <div>
+        <input id="ticket_input" placeholder="Ticket Number">
+        <button id="ticket_btn">Submit Ticket</button>
+    </div>
 <div class="append_below">
 </div>
 
@@ -68,9 +72,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Book Your Ticket!</h4>
+          <h4 class="modal-title" id="modLab">Book Your Ticket!</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id = "modLab">
           <p>Please Answer These Questions!</p>
         </div>
         <div align="center">
