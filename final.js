@@ -123,7 +123,7 @@ var flight_builder = (dictionary, depart, arrival, count) =>{
             success: (response) => {
                 airline_name = response.name;
                 var body = $(".append_below");
-                $(body).append(`<div class="ts${count}">
+                $(body).append(`<div class="ts${count}" id="flight_information">
                                     Airline--${airline_name}<br>
                                     Departure Time--${departure_time}<br>
                                     Arrival Time--${arrival_time}<br>
@@ -205,11 +205,11 @@ var ticket_getter = (id) => {
             let price = response.price_paid;
             //mason style here 
             $('.append_below').append(`
-                                        <div>
+                                        <div id= "ticket_information">
                                             <ul>
                                                 <li>first name--${first_name}</li>
                                                 <li>middle name--${middle_name}</li>
-                                                <li>last name--${last_name}</li>
+                                                <li>last name--${last_name}}</li>
                                                 <li>age--${age}</li>
                                                 <li>gender--${gender}</li>
                                                 <li>info--${info}</li>
