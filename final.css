@@ -177,4 +177,24 @@ input[type="time"] {
   transition: 0.3s;
 }
 
+#modal_header{
+	background-color: #009933;
+}
+#modText{
+	color:#ffffff;
+}
+#modal_footer{
+	background-color: #009933;
+}
+#confirm{
+	background-color: #ffffff;  
+	text-align: center;
+	display: inline-block; 
+	border-radius: 20px;
+	width: 12%;
+	padding: 10px;
+	font-size: 16px; 
+	justify-content: center; 
+}
+
 
