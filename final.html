@@ -1,105 +1,92 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Fly High</title>
-    <meta charset="UTF-8">
-    <link rel='stylesheet' href='final.css'/>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script src="final.js"></script>
-</head>
-<body>
-<div name="logo">
-	<img src="planeLOGO.png" class="ribbon">
-</div>
-<div align="center" class="ribbon" style="margin-bottom: 3%;">
-        <input id="ticket_input" class="effectFirst" placeholder="Look-up Past Ticket Itinerary" type="text">
-        <button id="ticket_btn" class="col-button w3-button w3-round" >Search</button>
-    </div>
-<div name ="input" style=" width:80%; margin: auto;" id="input" align="center">
-	<div class="col input-effect">
-        <input name = "fromText" class="effectFirst" id="airport1" type="text" placeholder="&#9992; From">
+   <head>
+      <title>Fly High</title>
+      <meta charset="UTF-8">
+      <link rel='stylesheet' href='final.css'/>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="final.js"></script>
+   </head>
+   <body>
+      <div name="logo">
+         <img src="planeLOGO.png" class="ribbon">
+      </div>
+      <div align="center" class="ribbon" style="margin-bottom: 3%;">
+         <input id="ticket_input" class="effectFirst" placeholder="Look-up Past Ticket Itinerary" type="text">
+         <button id="ticket_btn" class="col-button w3-button w3-round" >Search</button>
+      </div>
+      <div name ="input" style=" width:80%; margin: auto;" id="input" align="center">
+         <div class="col input-effect">
+            <input name = "fromText" class="effectFirst" id="airport1" type="text" placeholder="&#9992; From">
             <label>From? </label>
-        <span class="focus-border"></span>
-    </div>
-
-    <div class="col input-effect">
-        <input name = "toText" class="effectFirst" id="airport2" type="text" placeholder="&#9992; To">
+            <span class="focus-border"></span>
+         </div>
+         <div class="col input-effect">
+            <input name = "toText" class="effectFirst" id="airport2" type="text" placeholder="&#9992; To">
             <label>To? </label>
-        <span class="focus-border"></span>
-    </div>
-
-    <div class="col input-effect">
-        <input name = "departCal" class="effectFirst" type="time" id="depart_early">
-        <label>Depart Early</label>
-        <span class="focus-border"></span>
-    </div>
-    
-    <div class="col input-effect">
-        <input name = "departCal" class="effectFirst" type="time" id="depart_late">
-        <label>Depart Late</label>
-        <span class="focus-border"></span>
-    </div>
-
-    <div class="col input-effect">
-        <input name = "arrivCal" class="effectFirst" type="time" id="return_early">
-        <label>Return Early</label>
-        <span class="focus-border"></span>
-    </div>
-    
-    <div class="col input-effect">
-        <input name = "arrivCal" class="effectFirst" type="time" id="return_late">
-        <label>Return Late</label>
-        <span class="focus-border"></span>
-    </div>
-    
-    <div class="col input-effect">
-        <button id="execute" class="col-button w3-button w3-round">Submit</button>
-    </div> 
-</div>
-<div class="append_below">
-</div>
-
-<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header" id ="modal_header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="modText">Book Your Ticket!</h4>
-        </div>
-        <div class="modal-body" id = "modLab">
-          <p>Please Answer These Questions!</p>
-        </div>
-        <div align="center">
-    <label id = "modLab"> First Name: </label>
-        <input id='firstName' type='text'><br></input>
-    <label id = "modLab"> Middle Name: </label>
-        <input id='middleName' type='text'><br></input>
-    <label id = "modLab"> Last Name: </label>
-        <input id='lastName' type='text'><br></input>
-    <label id = "modLab"> Age: </label>
-        <input id='age' type='int'><br></input>
-    <label id = "modLab"> Gender: </label>
-        <input id='gender' type='text'><br></input>
+            <span class="focus-border"></span>
+         </div>
+         <div class="col input-effect">
+            <input name = "departCal" class="effectFirst" type="time" id="depart_early">
+            <label>Depart Early</label>
+            <span class="focus-border"></span>
+         </div>
+         <div class="col input-effect">
+            <input name = "departCal" class="effectFirst" type="time" id="depart_late">
+            <label>Depart Late</label>
+            <span class="focus-border"></span>
+         </div>
+         <div class="col input-effect">
+            <input name = "arrivCal" class="effectFirst" type="time" id="return_early">
+            <label>Return Early</label>
+            <span class="focus-border"></span>
+         </div>
+         <div class="col input-effect">
+            <input name = "arrivCal" class="effectFirst" type="time" id="return_late">
+            <label>Return Late</label>
+            <span class="focus-border"></span>
+         </div>
+         <div class="col input-effect">
+            <button id="execute" class="col-button w3-button w3-round">Submit</button>
+         </div>
       </div>
-		
-		
-        <div class="modal-footer" id="modal_footer">
-          <button type="button" id = 'confirm' class="btn btn-default" data-dismiss="modal">Submit</button>
-        </div>
+      <div class="append_below"></div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-header" id ="modal_header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title" id="modText">Book Your Ticket!</h4>
+               </div>
+               <div class="modal-body" id = "modLab">
+                  <p>Please Answer These Questions!</p>
+               </div>
+               <div align="center">
+                  <label id = "modLab"> First Name: </label>
+                  <input id='firstName' type='text'><br></input>
+                  <label id = "modLab"> Middle Name: </label>
+                  <input id='middleName' type='text'><br></input>
+                  <label id = "modLab"> Last Name: </label>
+                  <input id='lastName' type='text'><br></input>
+                  <label id = "modLab"> Age: </label>
+                  <input id='age' type='int'><br></input>
+                  <label id = "modLab"> Gender: </label>
+                  <input id='gender' type='text'><br></input>
+               </div>
+               <div class="modal-footer" id="modal_footer">
+                  <button type="button" id = 'confirm' class="btn btn-default" data-dismiss="modal">Submit</button>
+               </div>
+            </div>
+         </div>
       </div>
-      
-    </div>
-  </div>
-</div>
-<div id="soundcloud"><iframe width="150%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/211077015&color=%2317d132&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></div>
-
-</body>
+      </div>
+      <div id="soundcloud"><iframe width="150%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/211077015&color=%2317d132&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></div>
+   </body>
 </html>
