@@ -1,0 +1,43 @@
+#flight_information{
+	font: 15px/24px 'Muli', sans-serif; 
+  color: #333333; width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+
+	background-color:rgba(220, 220, 220, 0.9);
+	justify-content: center;
+	width: 60%;
+	text-align: center; 
+	margin: auto;
+	display: inline-block;
+    position: relative;
+    	text-align: center;
+	display: inline-block; 
+	border-radius: 20px;
+	padding: 10px;
+	font-size: 14px; 
+	justify-content: center;
+
+
+
+}
+#ticket_information{
+	font: 15px/24px 'Muli', sans-serif; 
+  color: #333333; width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+
+	background-color:rgba(220, 220, 220, 0.9);
+	justify-content: center;
+	width: 60%;
+	text-align: center; 
+	margin: auto;
+	display: inline-block;
+    position: relative;
+    	text-align: center;
+	display: inline-block; 
+	border-radius: 20px;
+	padding: 10px;
+	font-size: 14px; 
+	justify-content: center;
+}

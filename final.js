@@ -123,7 +123,7 @@ var flight_builder = (dictionary, depart, arrival, count) =>{
             success: (response) => {
                 airline_name = response.name;
                 var body = $(".append_below");
-                $(body).append(`<div class="ts" id="flight_information">
+                $(body).append(`<div class="ts${count}" id="flight_information">
                                     Airline--${airline_name}<br>
                                     Departure Time--${departure_time}<br>
                                     Arrival Time--${arrival_time}<br>
@@ -131,7 +131,7 @@ var flight_builder = (dictionary, depart, arrival, count) =>{
                                     arrival airport--${arrival}<br>
                                     flight ID--${flight_id}<br>
                                 </div>
-                                <button class = "col-button w3-button w3-round" position = "absolute" type="button" id="ts" data-toggle="modal" data-target="#myModal">Book Ticket</button>`);
+                                <button type="button" class="btn btn-info btn-lg book_ticket" id="ts${count}" data-toggle="modal" data-target="#myModal">Book Ticket</button>`);
                 if(ts_bool){
                     $('.book_ticket').click(function(){
                         btn_id = $(this).attr('id');
@@ -212,8 +212,8 @@ var ticket_getter = (id) => {
                                                 Last Name: ${last_name}<br>
                                                 Age: ${age}<br>
                                                 Gender: ${gender}<br>
-                                                Info: ${info}<br>
-                                                Price: ${price}<br>
+                                                Flight Info: ${info}<br>
+                                                Flight Price: ${price}<br>
                                             </ul>
                                         </div>`)
         } 
